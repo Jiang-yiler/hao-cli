@@ -4,9 +4,11 @@ const {program} = require('commander')
 const {chooseTemplate} = require('./inquirers')
 const download = require('download-git-repo')
 const templateMap = require('./templateMap')
+const ora = require('ora')
 
+const chalk = require('chalk');
 function start() {
-    // console.log('Hello CLI')
+    console.log(chalk.cyanBright('🫡🫡🫡 欢迎使用hao-cli命令行工具...\n'))
 
     program.version(require('./package.json').version) // 输出版对应的版本号
 
@@ -22,16 +24,27 @@ function start() {
             if (!template) {
                 template = await chooseTemplate();
             }
+            console.log(chalk.rgb(69, 39, 160)('你选择的模板是 👉'),chalk.bgRgb(69, 39, 160)(template))
+            const loading = ora({
+                text: '正在下载模板...',
+                color: 'yellow',
+                spinner: {
+                    interval: 80,
+                    frames: ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+                }
+            })
+            loading.start();
 
             const downloadUrl = templateMap.get(template);
 
             download(downloadUrl, projectName, {clone: true}, error => {
                 if (error) {
-                    console.log(`创建项目失败：${projectName}`)
-                    console.log('失败原因：',error)
+                    loading.fail(`下载失败 😭😭😭`)
+                    console.log(chalk.bgRgb(220,0,8)(`  创建项目失败：${projectName} `),'😭😭😭')
+                    console.log('🧐🧐🧐 失败原因：',chalk.bgRgb(220,0,8)(error.message))
                 } else {
-                    console.log(`成功创建项目：${projectName}`)
-                    console.log(`所使用的模板：${template}`);
+                    loading.succeed(`成功创建项目：${projectName}`)
+                    console.log('👆👆👆',chalk.rgb(69, 39, 160)('成功创建项目👉👉👉'),chalk.bgRgb(69, 39, 160)(projectName))
                 }
             })
         });
