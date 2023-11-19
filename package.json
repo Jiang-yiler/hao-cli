@@ -11,5 +11,10 @@
   "license": "ISC",
   "bin": {
     "hao": "index.js"
+  },
+  "dependencies": {
+    "commander": "^11.1.0",
+    "download-git-repo": "^3.0.2",
+    "inquirer": "^8.0.0"
   }
 }
