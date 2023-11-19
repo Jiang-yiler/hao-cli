@@ -45,20 +45,28 @@
 
 6. 美化命令行（ora.js和chalk.js）：ora.js添加loading效果；chalk改变命令行颜色
 
-7. 发布到npm
-
-## 功能扩展
-
-- 快速搭建项目目录结构
-- 用`koa2`搭建`node`本地服务模板，用于在日常开发中快速创建模拟后端的接口（用处不大，接口太多了，没法定制）
+7. 发布到npm：注册npm -> npm login -> npm publish
 
 ## 参考文档
 
-> [⚡【有手就行】轻松打造属于自己的Vue工程化脚手架工具 - 掘金 (juejin.cn)](https://juejin.cn/post/6867331101552181262#heading-0)
->
-> [中高级前端必备：如何设计并实现一个脚手架 - 掘金 (juejin.cn)](https://juejin.cn/post/7021097811491946503?searchId=20231020102400019F139CAE5E86E86C2F#heading-0)
+- [⚡【有手就行】轻松打造属于自己的Vue工程化脚手架工具 - 掘金 (juejin.cn)](https://juejin.cn/post/6867331101552181262#heading-0)
+
+- [中高级前端必备：如何设计并实现一个脚手架 - 掘金 (juejin.cn)](https://juejin.cn/post/7021097811491946503?searchId=20231020102400019F139CAE5E86E86C2F#heading-0)
 
 
 ## 遇到的问题及解决方法
 
-- https://blog.csdn.net/pro_fan/article/details/120457551
+- 执行hao create报错：https://blog.csdn.net/pro_fan/article/details/120457551
+- require ora报错：https://blog.csdn.net/ChenLingZhi1115/article/details/124415140
+- 执行npm login报错：https://blog.csdn.net/a5252145/article/details/108469648
+
+## TODOS
+
+- 确定Vue项目目录结构规范，更新到[vue2-template-default](https://github.com/Jiang-yiler/vue2-template-default) ，并在实际开发中用上
+  - [ ] 增加ElementUI库
+  - [ ] 增加axios的封装
+  - [ ] 增加mock配置和mock_data，区分本地环境和测试环境
+  - [ ] 增加工具函数库
+  - [ ] 增加eslint和prettier
+  - [ ] 将npm改为yarn
+- 再增加一个react项目的模板，放在haoo-cli的同级目录下
